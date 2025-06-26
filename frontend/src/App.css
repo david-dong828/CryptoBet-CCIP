@@ -1,0 +1,1043 @@
+html, body {
+  min-height: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: linear-gradient(to bottom right, #1a1a1a, #4a148c, #1a1a1a);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+} */
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* App.css - Main Application Styles */
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container */
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  /* background: linear-gradient(to bottom right, #1a1a1a, #4a148c, #1a1a1a); */
+}
+
+/* Header Styles */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  padding: 1rem;
+}
+
+.header-content {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  display: center;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #7c3aed, #ec4899);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(to right, #6d28d9, #db2777);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.btn-secondary {
+  background-color: #4b5563;
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #374151;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: #a78bfa;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.btn-icon:hover:not(:disabled) {
+  color: #c4b5fd;
+}
+
+.btn-icon:disabled {
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* Account Display */
+.account-display {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.account-info {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.account-label {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-bottom: 0.125rem;
+}
+
+.account-address {
+  font-size: 0.875rem;
+  color: white;
+  font-family: 'Courier New', monospace;
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  width: 100%;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cards */
+.card {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+/* Market Styles */
+.market-question {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.market-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-open {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.status-closed {
+  background-color: rgba(234, 179, 8, 0.2);
+  color: #eab308;
+}
+
+.status-settled {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.update-time {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat-card {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.stat-label {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.stat-value-flex {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Odds Grid */
+.odds-grid {
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.odds-card {
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.odds-card:hover:not(.disabled) {
+  transform: translateY(-2px);
+}
+
+.odds-card.disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.odds-card-yes {
+  background: linear-gradient(to bottom right, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+  border-color: rgba(34, 197, 94, 0.2);
+}
+
+.odds-card-yes.selected {
+  border-color: #22c55e;
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.2);
+}
+
+.odds-card-no {
+  background: linear-gradient(to bottom right, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+.odds-card-no.selected {
+  border-color: #ef4444;
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.2);
+}
+
+.odds-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.odds-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.odds-percentage {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.odds-percentage-yes {
+  color: #22c55e;
+}
+
+.odds-percentage-no {
+  color: #ef4444;
+}
+
+.odds-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.odds-detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.odds-detail-label {
+  color: #9ca3af;
+}
+
+.odds-detail-value {
+  color: white;
+  font-weight: 500;
+}
+
+.odds-detail-payout {
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.odds-detail-payout .odds-detail-value {
+  font-weight: bold;
+}
+
+.odds-detail-payout-yes {
+  color: #22c55e;
+}
+
+.odds-detail-payout-no {
+  color: #ef4444;
+}
+
+/* Betting Interface */
+.bet-form {
+  margin-top: 1rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: rgba(139, 92, 246, 0.6);
+}
+
+.input::placeholder {
+  color: #6b7280;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.button-group .btn {
+  flex: 1;
+}
+
+/* User Position */
+.position-card {
+  background: linear-gradient(to right, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.position-card.winner {
+  background: linear-gradient(to right, rgba(34, 197, 94, 0.2), rgba(16, 185, 129, 0.2));
+  border-color: rgba(34, 197, 94, 0.5);
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.2);
+}
+
+.position-card.loser {
+  background: linear-gradient(to right, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.position-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.position-grid {
+  display: flex;
+  flex-wrap: wrap;
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+  gap: 1rem;
+}
+
+.position-item {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.position-label {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-bottom: 0.25rem;
+}
+
+.position-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-claim {
+  width: 100%;
+  margin-top: 1rem;
+  background: linear-gradient(to right, #10b981, #059669);
+}
+
+.btn-claim:hover:not(:disabled) {
+  background: linear-gradient(to right, #059669, #047857);
+}
+
+/* Result Banner */
+.result-banner {
+  background: linear-gradient(to right, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.1));
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.result-banner.result-no {
+  background: linear-gradient(to right, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.result-title {
+  font-size: 1.125rem;
+  color: #9ca3af;
+  margin-bottom: 0.5rem;
+}
+
+.result-outcome {
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.result-outcome-yes {
+  color: #22c55e;
+}
+
+.result-outcome-no {
+  color: #ef4444;
+}
+
+.result-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.result-stat {
+  text-align: center;
+}
+
+.result-stat-label {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-bottom: 0.25rem;
+}
+
+.result-stat-value {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+}
+
+/* Winner/Loser badges */
+.winner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(to right, #10b981, #059669);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.loser-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(to right, #dc2626, #b91c1c);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* Winnings display */
+.winnings-amount {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #22c55e;
+  margin: 0.5rem 0;
+}
+
+.bet-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.bet-status-active {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.bet-status-won {
+  background-color: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.bet-status-lost {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.bet-status-claimed {
+  background-color: rgba(156, 163, 175, 0.2);
+  color: #9ca3af;
+}
+
+/* Info Box */
+.info-box {
+  background-color: rgba(29, 78, 216, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.info-box-icon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.info-box-content {
+  font-size: 0.875rem;
+  color: #93bbfe;
+}
+
+.info-box-title {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #dbeafe;
+}
+
+/* Welcome Screen */
+.welcome-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.welcome-content {
+  text-align: center;
+}
+
+.welcome-icon {
+  margin: 0 auto 1rem;
+}
+
+.welcome-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-text {
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+/* Loading States */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #9ca3af;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 1rem;
+  }
+  
+  .market-question {
+    font-size: 1.5rem;
+  }
+  
+  .odds-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .position-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.detail-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.detail-slide-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 640px;
+  height: 100vh;
+  background: rgba(15, 15, 25, 0.95);
+  backdrop-filter: blur(12px);
+  overflow-y: auto;
+  z-index: 100;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.5);
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+}
+
+.detail-slide-panel.open {
+  transform: translateX(0);
+}
+
+.main.dimmed {
+  filter: blur(3px) grayscale(0.4);
+  pointer-events: none;
+}
+
+/* Button animations for more polish */
+.btn-primary, .btn-secondary {
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+.btn-primary:active, .btn-secondary:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5) inset;
+}
+
+/* Optional: dark scrollbars for detail panel */
+.detail-slide-panel::-webkit-scrollbar {
+  width: 8px;
+}
+.detail-slide-panel::-webkit-scrollbar-thumb {
+  background-color: rgba(139, 92, 246, 0.4);
+  border-radius: 4px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+.contract-card {
+  background-color: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.contract-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
+}
+
+.contract-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.contract-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  flex: 1;
+}
+
+.contract-odds {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #a78bfa;
+}
+
+/* COMPACT Slide Panel Layout */
+
+.detail-slide-panel {
+  /* keep width as is */
+  padding: 0.6rem 0.6rem 0.4rem 0.6rem !important;
+  overflow-y: auto;
+}
+
+/* Reduce padding, margin, font size everywhere inside */
+.detail-slide-panel .card,
+.detail-slide-panel .stat-card,
+.detail-slide-panel .position-card {
+  padding: 0.35rem 0.65rem !important;
+  border-radius: 0.5rem !important;
+  margin-bottom: 0.28rem !important;
+}
+
+.detail-slide-panel .card-header {
+  margin-bottom: 0.18rem !important;
+  min-height: 0;
+}
+
+.detail-slide-panel .market-question {
+  font-size: 1.02rem !important;
+  margin-bottom: 0.07rem !important;
+}
+
+.detail-slide-panel .market-meta {
+  gap: 0.25rem !important;
+  font-size: 0.83rem !important;
+  flex-wrap: wrap;
+}
+
+.detail-slide-panel .stat-label {
+  font-size: 0.71rem !important;
+  margin-bottom: 0.08rem !important;
+}
+
+.detail-slide-panel .stat-value,
+.detail-slide-panel .stat-value-flex {
+  font-size: 1.02rem !important;
+  gap: 0.14rem !important;
+}
+
+.detail-slide-panel .stats-grid {
+  gap: 0.4rem !important;
+  margin-top: 0.08rem !important;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+/* Make stat cards appear side-by-side */
+.detail-slide-panel .stat-card {
+  min-width: 120px;
+  margin-bottom: 0 !important;
+}
+
+.detail-slide-panel .odds-grid {
+  gap: 0.35rem !important;
+  margin-bottom: 0.35rem !important;
+  flex-wrap: nowrap;
+}
+
+.detail-slide-panel .odds-card {
+  padding: 0.36rem !important;
+  border-radius: 0.38rem !important;
+  min-width: 120px;
+  flex: 1;
+}
+
+.detail-slide-panel .odds-title {
+  font-size: 0.93rem !important;
+}
+
+.detail-slide-panel .odds-percentage {
+  font-size: 1.05rem !important;
+  margin-top: 0.08rem !important;
+}
+
+.detail-slide-panel .odds-details {
+  gap: 0.10rem !important;
+}
+
+.detail-slide-panel .odds-detail-row {
+  font-size: 0.78rem !important;
+  margin-bottom: 0.03rem !important;
+}
+
+.detail-slide-panel .bet-form {
+  margin-top: 0.12rem !important;
+}
+
+.detail-slide-panel .input-group {
+  margin-bottom: 0.15rem !important;
+}
+
+.detail-slide-panel .input-label {
+  font-size: 0.73rem !important;
+  margin-bottom: 0.08rem !important;
+}
+
+.detail-slide-panel .input {
+  padding: 0.28rem 0.28rem 0.28rem 1.3rem !important;
+  font-size: 0.89rem !important;
+  border-radius: 0.31rem !important;
+  min-height: 1.7em;
+}
+
+.detail-slide-panel .button-group {
+  gap: 0.2rem !important;
+}
+
+.detail-slide-panel .btn {
+  padding: 0.28rem 0.7rem !important;
+  font-size: 0.84rem !important;
+  border-radius: 0.33rem !important;
+}
+
+.detail-slide-panel .position-grid {
+  gap: 0.13rem !important;
+  flex-wrap: wrap;
+}
+
+.detail-slide-panel .position-label {
+  font-size: 0.71rem !important;
+}
+
+.detail-slide-panel .position-value {
+  font-size: 0.98rem !important;
+  gap: 0.10rem !important;
+}
+
+.detail-slide-panel .info-box {
+  padding: 0.33rem 0.5rem !important;
+  font-size: 0.79rem !important;
+  border-radius: 0.44rem !important;
+  margin-bottom: 0.12rem !important;
+}
+
+/* Hide the large icons or reduce their size */
+.detail-slide-panel .market-question svg,
+.detail-slide-panel .card-header svg,
+.detail-slide-panel .position-header svg {
+  width: 1.1em !important;
+  height: 1.1em !important;
+  min-width: 1.1em !important;
+  min-height: 1.1em !important;
+}
+
+.detail-slide-panel .stat-value-flex svg {
+  width: 0.95em !important;
+  height: 0.95em !important;
+}
+
+.detail-slide-panel .account-info,
+.detail-slide-panel .market-address {
+  font-size: 0.79rem !important;
+}
+
+.detail-slide-panel .result-banner,
+.detail-slide-panel .result-banner.result-no {
+  padding: 0.22rem !important;
+  border-radius: 0.4rem !important;
+  margin-bottom: 0.13rem !important;
+}
+
+.detail-slide-panel .empty-state {
+  padding: 0.9rem 0.1rem !important;
+}
+
+/* Optional: shrink CountdownTimer in panel if used */
+.detail-slide-panel .card .countdown-container {
+  font-size: 0.91rem !important;
+  padding: 0.18rem 0 !important;
+}
+
+
