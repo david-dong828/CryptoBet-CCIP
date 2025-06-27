@@ -1,0 +1,16 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+remappings = ["@chainlink/=node_modules/@chainlink/",
+                'forge-std/=lib/forge-std/src/',
+  '@openzeppelin/=node_modules/@openzeppelin/']
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+
+
+
+[rpc_endpoints]
+sepolia = "https://eth-sepolia.g.alchemy.com/v2/YOURSEPOLIAAPI"
+fuji = "https://avax-fuji.g.alchemy.com/v2/YOUFUJIAPI"
