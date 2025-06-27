@@ -73,6 +73,7 @@ function App() {
   const [tokenBettingEnabled, setTokenBettingEnabled] = useState(false);
   const [chainId, setChainId] = useState(null);
 
+  const [showWrongNetworkModal, setShowWrongNetworkModal] = useState(false);
   
   // User interaction
   const [selectedBet, setSelectedBet] = useState(null);
@@ -83,7 +84,7 @@ function App() {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   useEffect(() => {
-    if (window.ethereum) {
+  if (window.ethereum) {
       window.ethereum.on('chainChanged', (chainIdHex) => {
         setChainId(parseInt(chainIdHex, 16));
       });
@@ -93,6 +94,22 @@ function App() {
         window.ethereum.removeListener('chainChanged', () => {});
       }
     };
+  }, []);
+
+  useEffect(() => {
+    if (window.ethereum) {
+      window.ethereum.request({ method: 'eth_chainId' })
+        .then((chainIdHex) => {
+          const chainId = parseInt(chainIdHex, 16);
+          setChainId(chainId);
+          if (chainId !== 11155111) {
+            setShowWrongNetworkModal(true);
+          }
+        })
+        .catch((err) => {
+          console.error('Error checking chainId:', err);
+        });
+    }
   }, []);
 
   // Connect wallet handler
@@ -416,9 +433,60 @@ function App() {
     );
   }
 
+  const WrongNetworkModal = () => (
+    <div
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "rgba(0,0,0,0.7)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 200,
+      }}
+    >
+      <div
+        style={{
+          background: "#1f2937",
+          borderRadius: "1rem",
+          padding: "2rem",
+          maxWidth: "400px",
+          textAlign: "center",
+          color: "white",
+          boxShadow: "0 0 20px rgba(0,0,0,0.5)",
+        }}
+      >
+        <p style={{ marginBottom: "1.5rem" }}>
+          Please switch your wallet to the <strong>Sepolia</strong> network firstly, then refresh to Re-enter!
+        </p>
+        <button
+          className="btn btn-primary"
+          onClick={async () => {
+            try {
+              await window.ethereum.request({
+                method: 'wallet_switchEthereumChain',
+                params: [{ chainId: '0xaa36a7' }], // Sepolia chainId
+              });
+              setShowWrongNetworkModal(false);
+            } catch (switchError) {
+              console.error("Error switching network:", switchError);
+              alert("Failed to switch network. Please switch manually in your wallet.");
+            }
+          }}
+        >
+          Switch to Sepolia
+        </button>
+      </div>
+    </div>
+  );
+
   const hasUserBet = userBets && Array.isArray(userBets) && userBets.length > 0;
   return (
     <div className="app-container">
+      {showWrongNetworkModal && <WrongNetworkModal />}
       {/* Header always visible */}
       <header className="header">
         <div className="header-content">
